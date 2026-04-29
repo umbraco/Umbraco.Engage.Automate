@@ -1,4 +1,5 @@
-using Umbraco.Automate.Testing;
+using Umbraco.Automate.Core.Settings;
+using Umbraco.Automate.Core.Triggers;
 using Umbraco.Engage.Automate.Notifications;
 using Umbraco.Engage.Automate.Triggers;
 using Umbraco.Engage.Infrastructure.Events;
@@ -7,6 +8,9 @@ namespace Umbraco.Engage.Automate.Tests.Unit.Triggers;
 
 public class PersonaScoredTriggerTests
 {
+    private readonly PersonaScoredTrigger _trigger = new(
+        new TriggerInfrastructure(Mock.Of<IEditableModelResolver>()));
+
     [Fact]
     public void MapEvent_ReturnsCorrectTriggerEvent()
     {
@@ -18,13 +22,11 @@ public class PersonaScoredTriggerTests
         var engageEvent = new PersonaScoredEvent(visitorId, personaId, score, isLocked);
         var notification = new EngagePersonaScoredNotification(engageEvent);
 
-        var events = TriggerTestHarness.For<PersonaScoredTrigger>()
-            .MapEvent(notification)
-            .ToList();
+        var events = _trigger.MapEvent(notification).ToList();
 
         events.ShouldHaveSingleItem();
 
-        var output = events[0].Output<PersonaScoredTriggerOutput>();
+        var output = ((TriggerEvent<PersonaScoredTriggerOutput>)events[0]).Output;
         output.VisitorId.ShouldBe(visitorId);
         output.PersonaId.ShouldBe(personaId);
         output.Score.ShouldBe(score);
@@ -37,10 +39,8 @@ public class PersonaScoredTriggerTests
         var engageEvent = new PersonaScoredEvent(Guid.NewGuid(), 1L, 10, false);
         var notification = new EngagePersonaScoredNotification(engageEvent);
 
-        var events = TriggerTestHarness.For<PersonaScoredTrigger>()
-            .MapEvent(notification)
-            .ToList();
+        var events = _trigger.MapEvent(notification).ToList();
 
-        events[0].Output<PersonaScoredTriggerOutput>().IsLocked.ShouldBeFalse();
+        ((TriggerEvent<PersonaScoredTriggerOutput>)events[0]).Output.IsLocked.ShouldBeFalse();
     }
 }

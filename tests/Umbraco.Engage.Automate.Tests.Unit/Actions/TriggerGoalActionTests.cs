@@ -38,7 +38,7 @@ public class TriggerGoalActionTests
     public async Task GoalServiceReturnsFalse_ReturnsValidationError()
     {
         var goalKey = Guid.NewGuid();
-        _goalService.Setup(s => s.TriggerGoalAsync(goalKey, 0)).ReturnsAsync(false);
+        _goalService.Setup(s => s.TriggerGoal(goalKey, 0)).Returns(false);
 
         var result = await ActionTestHarness.For<TriggerGoalAction>()
             .WithService(_goalService.Object)
@@ -53,16 +53,16 @@ public class TriggerGoalActionTests
     public async Task ValidGoalKey_ReturnsSuccess()
     {
         var goalKey = Guid.NewGuid();
-        _goalService.Setup(s => s.TriggerGoalAsync(goalKey, 5)).ReturnsAsync(true);
+        _goalService.Setup(s => s.TriggerGoal(goalKey, 5)).Returns(true);
 
         var result = await ActionTestHarness.For<TriggerGoalAction>()
             .WithService(_goalService.Object)
             .WithSettings(new TriggerGoalSettings { GoalKey = goalKey.ToString(), Value = 5 })
             .ExecuteAsync();
 
-        result.Status.ShouldBe(ActionResultStatus.Succeeded);
+        result.Status.ShouldBe(ActionResultStatus.Success);
 
-        var output = result.Output<TriggerGoalOutput>();
+        var output = (result.OutputData as TriggerGoalOutput)!;
         output.GoalKey.ShouldBe(goalKey);
         output.Value.ShouldBe(5);
     }

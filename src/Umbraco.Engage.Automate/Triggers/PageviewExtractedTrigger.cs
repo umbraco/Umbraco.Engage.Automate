@@ -19,7 +19,6 @@ public sealed class PageviewExtractedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "visitor",
-            IdempotencyKey = GenerateIdempotencyKey(pageview.Guid),
             Output = new PageviewExtractedTriggerOutput
             {
                 PageviewId = pageview.Id,

@@ -18,7 +18,6 @@ public sealed class SegmentSavedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.SegmentId),
             Output = new SegmentSavedTriggerOutput
             {
                 SegmentId = notification.SegmentId,

@@ -18,7 +18,6 @@ public sealed class CustomerJourneyStepScoredTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "visitor",
-            IdempotencyKey = GenerateIdempotencyKey(notification.VisitorId, notification.CustomerJourneyStepId, notification.Score),
             Output = new CustomerJourneyStepScoredTriggerOutput
             {
                 VisitorId = notification.VisitorId,

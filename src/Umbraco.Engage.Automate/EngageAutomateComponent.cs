@@ -1,4 +1,4 @@
-using Umbraco.Cms.Core;
+using Umbraco.Cms.Core.Composing;
 using Umbraco.Engage.Automate.Notifications.Handlers;
 using Umbraco.Engage.Infrastructure.Events;
 

@@ -18,7 +18,6 @@ public sealed class CustomGoalCompletedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "visitor",
-            IdempotencyKey = GenerateIdempotencyKey(notification.VisitorId, notification.GoalId, notification.Timestamp),
             Output = new CustomGoalCompletedTriggerOutput
             {
                 VisitorId = notification.VisitorId,

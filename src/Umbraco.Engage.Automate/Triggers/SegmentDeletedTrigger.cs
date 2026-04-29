@@ -18,7 +18,6 @@ public sealed class SegmentDeletedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.SegmentId),
             Output = new SegmentDeletedTriggerOutput
             {
                 SegmentId = notification.SegmentId,

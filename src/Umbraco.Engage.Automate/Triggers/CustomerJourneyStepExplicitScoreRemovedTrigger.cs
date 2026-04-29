@@ -18,7 +18,6 @@ public sealed class CustomerJourneyStepExplicitScoreRemovedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.VisitorId, notification.CustomerJourneyStepId),
             Output = new CustomerJourneyStepExplicitScoreRemovedTriggerOutput
             {
                 VisitorId = notification.VisitorId,

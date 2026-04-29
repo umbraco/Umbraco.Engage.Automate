@@ -18,7 +18,6 @@ public sealed class PersonaExplicitScoreRemovedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.VisitorId, notification.PersonaId),
             Output = new PersonaExplicitScoreRemovedTriggerOutput
             {
                 VisitorId = notification.VisitorId,

@@ -19,7 +19,6 @@ public sealed class NewSessionStartedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "visitor",
-            IdempotencyKey = GenerateIdempotencyKey(session.Id),
             Output = new NewSessionStartedTriggerOutput
             {
                 SessionId = session.Id,

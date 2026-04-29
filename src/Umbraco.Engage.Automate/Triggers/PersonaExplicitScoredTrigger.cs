@@ -18,7 +18,6 @@ public sealed class PersonaExplicitScoredTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.VisitorId, notification.Entity.Id),
             Output = new PersonaExplicitScoredTriggerOutput
             {
                 VisitorId = notification.VisitorId,

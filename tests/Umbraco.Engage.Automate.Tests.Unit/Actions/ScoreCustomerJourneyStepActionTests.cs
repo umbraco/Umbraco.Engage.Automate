@@ -83,9 +83,9 @@ public class ScoreCustomerJourneyStepActionTests
         _customerJourneyService.Verify(s => s.ScoreCustomerJourneyStep(
             visitorId, stepKey, 5, 0, PersonalizationScoreType.Custom, false), Times.Once);
 
-        result.Status.ShouldBe(ActionResultStatus.Succeeded);
+        result.Status.ShouldBe(ActionResultStatus.Success);
 
-        var output = result.Output<ScoreCustomerJourneyStepOutput>();
+        var output = (result.OutputData as ScoreCustomerJourneyStepOutput)!;
         output.VisitorExternalId.ShouldBe(visitorId);
         output.StepKey.ShouldBe(stepKey);
         output.Score.ShouldBe(5);

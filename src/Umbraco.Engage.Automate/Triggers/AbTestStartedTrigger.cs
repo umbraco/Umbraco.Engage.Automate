@@ -18,7 +18,6 @@ public sealed class AbTestStartedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.Test.Id),
             Output = new AbTestStartedTriggerOutput
             {
                 AbTestId = notification.Test.Id,

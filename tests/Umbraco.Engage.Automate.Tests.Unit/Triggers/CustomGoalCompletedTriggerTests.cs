@@ -1,4 +1,5 @@
-using Umbraco.Automate.Testing;
+using Umbraco.Automate.Core.Settings;
+using Umbraco.Automate.Core.Triggers;
 using Umbraco.Engage.Automate.Notifications;
 using Umbraco.Engage.Automate.Triggers;
 using Umbraco.Engage.Infrastructure.Events;
@@ -7,6 +8,9 @@ namespace Umbraco.Engage.Automate.Tests.Unit.Triggers;
 
 public class CustomGoalCompletedTriggerTests
 {
+    private readonly CustomGoalCompletedTrigger _trigger = new(
+        new TriggerInfrastructure(Mock.Of<IEditableModelResolver>()));
+
     [Fact]
     public void MapEvent_ReturnsCorrectTriggerEvent()
     {
@@ -18,13 +22,11 @@ public class CustomGoalCompletedTriggerTests
         var engageEvent = new CustomGoalCompletedEvent(visitorId, goalId, value, timestamp);
         var notification = new EngageCustomGoalCompletedNotification(engageEvent);
 
-        var events = TriggerTestHarness.For<CustomGoalCompletedTrigger>()
-            .MapEvent(notification)
-            .ToList();
+        var events = _trigger.MapEvent(notification).ToList();
 
         events.ShouldHaveSingleItem();
 
-        var output = events[0].Output<CustomGoalCompletedTriggerOutput>();
+        var output = ((TriggerEvent<CustomGoalCompletedTriggerOutput>)events[0]).Output;
         output.VisitorId.ShouldBe(visitorId);
         output.GoalId.ShouldBe(goalId);
         output.Value.ShouldBe(value);

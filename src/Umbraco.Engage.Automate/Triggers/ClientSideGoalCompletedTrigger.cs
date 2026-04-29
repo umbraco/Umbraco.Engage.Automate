@@ -20,7 +20,6 @@ public sealed class ClientSideGoalCompletedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "visitor",
-            IdempotencyKey = GenerateIdempotencyKey(pageview.Guid, goal.Goal.Id, notification.SessionSequenceNumber),
             Output = new ClientSideGoalCompletedTriggerOutput
             {
                 PageviewId = pageview.Id,

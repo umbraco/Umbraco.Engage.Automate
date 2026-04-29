@@ -18,7 +18,6 @@ public sealed class AbTestVariantSavedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.AbTestVariantId),
             Output = new AbTestVariantSavedTriggerOutput
             {
                 AbTestVariantId = notification.AbTestVariantId,

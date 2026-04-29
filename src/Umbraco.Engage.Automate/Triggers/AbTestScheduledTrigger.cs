@@ -18,7 +18,6 @@ public sealed class AbTestScheduledTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.Test.Id),
             Output = new AbTestScheduledTriggerOutput
             {
                 AbTestId = notification.Test.Id,

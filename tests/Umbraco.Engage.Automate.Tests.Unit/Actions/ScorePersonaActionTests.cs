@@ -83,9 +83,9 @@ public class ScorePersonaActionTests
         _personaService.Verify(s => s.ScorePersona(
             visitorId, personaKey, 10, 0, PersonalizationScoreType.Custom, false), Times.Once);
 
-        result.Status.ShouldBe(ActionResultStatus.Succeeded);
+        result.Status.ShouldBe(ActionResultStatus.Success);
 
-        var output = result.Output<ScorePersonaOutput>();
+        var output = (result.OutputData as ScorePersonaOutput)!;
         output.VisitorExternalId.ShouldBe(visitorId);
         output.PersonaKey.ShouldBe(personaKey);
         output.Score.ShouldBe(10);
@@ -109,7 +109,7 @@ public class ScorePersonaActionTests
             })
             .ExecuteAsync();
 
-        result.Status.ShouldBe(ActionResultStatus.Succeeded);
-        result.Output<ScorePersonaOutput>().IsLocked.ShouldBeTrue();
+        result.Status.ShouldBe(ActionResultStatus.Success);
+        ((ScorePersonaOutput)result.OutputData!).IsLocked.ShouldBeTrue();
     }
 }

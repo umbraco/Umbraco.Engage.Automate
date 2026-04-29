@@ -18,7 +18,6 @@ public sealed class AbTestStoppedTrigger
         {
             TriggerAlias = Alias,
             InitiatorType = "system",
-            IdempotencyKey = GenerateIdempotencyKey(notification.AbTestId),
             Output = new AbTestStoppedTriggerOutput
             {
                 AbTestId = notification.AbTestId,
