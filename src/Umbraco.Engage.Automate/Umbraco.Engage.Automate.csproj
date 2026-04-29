@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Title>Umbraco Engage Automate</Title>
+        <Description>Umbraco Engage triggers and actions for Umbraco Automate</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Umbraco.Automate.Core" />
+        <PackageReference Include="Umbraco.Engage.Core" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="Umbraco.Engage.Automate.Tests.Unit" />
+    </ItemGroup>
+
+</Project>
