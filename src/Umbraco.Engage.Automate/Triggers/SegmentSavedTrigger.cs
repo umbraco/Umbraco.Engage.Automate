@@ -17,7 +17,7 @@ public sealed class SegmentSavedTrigger
         yield return new TriggerEvent<SegmentSavedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new SegmentSavedTriggerOutput
             {
                 SegmentId = notification.SegmentId,

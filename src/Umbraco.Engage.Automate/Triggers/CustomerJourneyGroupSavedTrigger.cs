@@ -17,7 +17,7 @@ public sealed class CustomerJourneyGroupSavedTrigger
         yield return new TriggerEvent<CustomerJourneyGroupSavedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new CustomerJourneyGroupSavedTriggerOutput(),
         };
     }

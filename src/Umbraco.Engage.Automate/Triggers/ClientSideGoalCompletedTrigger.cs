@@ -14,20 +14,18 @@ public sealed class ClientSideGoalCompletedTrigger
 
     public override IEnumerable<TriggerEvent> MapEvent(EngageClientSideGoalCompletedNotification notification)
     {
-        var pageview = notification.Pageview;
-        var goal = notification.GoalCompletion;
         yield return new TriggerEvent<ClientSideGoalCompletedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "visitor",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new ClientSideGoalCompletedTriggerOutput
             {
-                PageviewId = pageview.Id,
-                PageviewGuid = pageview.Guid,
-                GoalId = goal.Goal.Id,
-                GoalValue = goal.Value,
+                PageviewId = notification.PageviewId,
+                PageviewGuid = notification.PageviewGuid,
+                GoalId = notification.GoalId,
+                GoalValue = notification.GoalValue,
                 SessionSequenceNumber = notification.SessionSequenceNumber,
-                Timestamp = goal.Timestamp,
+                Timestamp = notification.Timestamp,
             },
         };
     }

@@ -17,12 +17,12 @@ public sealed class CustomerJourneyStepExplicitScoredTrigger
         yield return new TriggerEvent<CustomerJourneyStepExplicitScoredTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new CustomerJourneyStepExplicitScoredTriggerOutput
             {
                 VisitorId = notification.VisitorId,
-                CustomerJourneyStepId = notification.Entity.CustomerJourneyStepId,
-                GroupId = notification.Entity.GroupId,
+                CustomerJourneyStepId = notification.CustomerJourneyStepId,
+                GroupId = notification.GroupId,
             },
         };
     }

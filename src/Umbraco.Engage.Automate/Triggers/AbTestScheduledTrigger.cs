@@ -17,11 +17,11 @@ public sealed class AbTestScheduledTrigger
         yield return new TriggerEvent<AbTestScheduledTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new AbTestScheduledTriggerOutput
             {
-                AbTestId = notification.Test.Id,
-                AbTestName = notification.Test.Name,
+                AbTestId = notification.AbTestId,
+                AbTestName = notification.AbTestName,
             },
         };
     }

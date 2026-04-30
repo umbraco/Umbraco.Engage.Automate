@@ -17,7 +17,7 @@ public sealed class PersonaGroupSavedTrigger
         yield return new TriggerEvent<PersonaGroupSavedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new PersonaGroupSavedTriggerOutput(),
         };
     }

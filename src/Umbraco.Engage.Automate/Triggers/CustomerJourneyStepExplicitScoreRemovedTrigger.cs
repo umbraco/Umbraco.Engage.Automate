@@ -17,7 +17,7 @@ public sealed class CustomerJourneyStepExplicitScoreRemovedTrigger
         yield return new TriggerEvent<CustomerJourneyStepExplicitScoreRemovedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new CustomerJourneyStepExplicitScoreRemovedTriggerOutput
             {
                 VisitorId = notification.VisitorId,

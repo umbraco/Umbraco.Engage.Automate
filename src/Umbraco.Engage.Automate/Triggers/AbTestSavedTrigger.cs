@@ -17,7 +17,7 @@ public sealed class AbTestSavedTrigger
         yield return new TriggerEvent<AbTestSavedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new AbTestSavedTriggerOutput
             {
                 AbTestId = notification.AbTestId,

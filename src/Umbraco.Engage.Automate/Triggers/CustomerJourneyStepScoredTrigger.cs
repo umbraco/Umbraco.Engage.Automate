@@ -17,7 +17,7 @@ public sealed class CustomerJourneyStepScoredTrigger
         yield return new TriggerEvent<CustomerJourneyStepScoredTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "visitor",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new CustomerJourneyStepScoredTriggerOutput
             {
                 VisitorId = notification.VisitorId,

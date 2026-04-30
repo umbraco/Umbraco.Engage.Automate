@@ -14,17 +14,16 @@ public sealed class NewSessionStartedTrigger
 
     public override IEnumerable<TriggerEvent> MapEvent(EngageNewSessionStartedNotification notification)
     {
-        var session = notification.Session;
         yield return new TriggerEvent<NewSessionStartedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "visitor",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new NewSessionStartedTriggerOutput
             {
-                SessionId = session.Id,
-                SessionTimestamp = session.Timestamp,
-                PageviewCount = session.PageviewCount,
-                VisitorId = session.Visitor?.Id,
+                SessionId = notification.SessionId,
+                SessionTimestamp = notification.SessionTimestamp,
+                PageviewCount = notification.PageviewCount,
+                VisitorId = notification.VisitorId,
             },
         };
     }

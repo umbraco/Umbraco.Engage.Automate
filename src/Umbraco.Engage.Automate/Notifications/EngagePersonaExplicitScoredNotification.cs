@@ -1,6 +1,5 @@
 using Umbraco.Cms.Core.Notifications;
 using Umbraco.Engage.Infrastructure.Events;
-using Umbraco.Engage.Infrastructure.Personalization.Personas;
 
 namespace Umbraco.Engage.Automate.Notifications;
 
@@ -8,5 +7,6 @@ namespace Umbraco.Engage.Automate.Notifications;
 public sealed class EngagePersonaExplicitScoredNotification(PersonaExplicitScoredEvent @event) : INotification
 {
     public Guid VisitorId { get; } = @event.VisitorId;
-    public PersonaExplicitScore Entity { get; } = @event.Entity;
+    public long PersonaId { get; } = @event.Entity.PersonaId;
+    public long GroupId { get; } = @event.Entity.GroupId;
 }
