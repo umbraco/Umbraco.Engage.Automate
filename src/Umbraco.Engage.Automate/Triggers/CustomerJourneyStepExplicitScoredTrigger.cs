@@ -6,7 +6,7 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.customerJourneyStepExplicitScored", "Customer Journey Step Explicitly Assigned",
     Description = "Fires when a visitor is manually locked to a customer journey step.",
     Group = "Engage",
-    Icon = "icon-route")]
+    Icon = "icon-path")]
 public sealed class CustomerJourneyStepExplicitScoredTrigger
     : NotificationTriggerBase<object, CustomerJourneyStepExplicitScoredTriggerOutput, EngageCustomerJourneyStepExplicitScoredNotification>
 {

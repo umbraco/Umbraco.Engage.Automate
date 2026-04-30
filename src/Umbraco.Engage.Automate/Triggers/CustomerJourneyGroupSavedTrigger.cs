@@ -6,7 +6,7 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.customerJourneyGroupSaved", "Customer Journey Group Saved",
     Description = "Fires when a customer journey group is saved.",
     Group = "Engage",
-    Icon = "icon-route")]
+    Icon = "icon-path")]
 public sealed class CustomerJourneyGroupSavedTrigger
     : NotificationTriggerBase<object, CustomerJourneyGroupSavedTriggerOutput, EngageCustomerJourneyGroupSavedNotification>
 {

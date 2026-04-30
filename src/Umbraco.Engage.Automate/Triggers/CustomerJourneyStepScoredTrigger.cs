@@ -6,7 +6,7 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.customerJourneyStepScored", "Customer Journey Step Scored",
     Description = "Fires when a visitor's customer journey step score changes.",
     Group = "Engage",
-    Icon = "icon-route")]
+    Icon = "icon-path")]
 public sealed class CustomerJourneyStepScoredTrigger
     : NotificationTriggerBase<object, CustomerJourneyStepScoredTriggerOutput, EngageCustomerJourneyStepScoredNotification>
 {

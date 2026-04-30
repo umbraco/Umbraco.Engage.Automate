@@ -6,7 +6,7 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.customerJourneyStepExplicitScoreRemoved", "Customer Journey Step Assignment Removed",
     Description = "Fires when a visitor's manual customer journey step assignment is removed.",
     Group = "Engage",
-    Icon = "icon-route")]
+    Icon = "icon-path")]
 public sealed class CustomerJourneyStepExplicitScoreRemovedTrigger
     : NotificationTriggerBase<object, CustomerJourneyStepExplicitScoreRemovedTriggerOutput, EngageCustomerJourneyStepExplicitScoreRemovedNotification>
 {
