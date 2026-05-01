@@ -8,7 +8,7 @@ internal sealed class CustomerJourneyGroupSavedBridgeHandler(IEventAggregator ev
     : EngageBridgeHandlerBase, IEventHandler<CustomerJourneyGroupSavedEvent>
 {
     public void Handle(CustomerJourneyGroupSavedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngageCustomerJourneyGroupSavedNotification());
+        eventAggregator.Publish(new EngageCustomerJourneyGroupSavedNotification());
 
     public override void Register() => SystemEventService.Register<CustomerJourneyGroupSavedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

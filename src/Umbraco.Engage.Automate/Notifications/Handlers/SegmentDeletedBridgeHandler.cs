@@ -8,7 +8,7 @@ internal sealed class SegmentDeletedBridgeHandler(IEventAggregator eventAggregat
     : EngageBridgeHandlerBase, IEventHandler<SegmentDeletedEvent>
 {
     public void Handle(SegmentDeletedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngageSegmentDeletedNotification(@event));
+        eventAggregator.Publish(new EngageSegmentDeletedNotification(@event));
 
     public override void Register() => SystemEventService.Register<SegmentDeletedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

@@ -8,7 +8,7 @@ internal sealed class PersonaExplicitScoreRemovedBridgeHandler(IEventAggregator 
     : EngageBridgeHandlerBase, IEventHandler<PersonaExplicitScoreRemovedEvent>
 {
     public void Handle(PersonaExplicitScoreRemovedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngagePersonaExplicitScoreRemovedNotification(@event));
+        eventAggregator.Publish(new EngagePersonaExplicitScoreRemovedNotification(@event));
 
     public override void Register() => SystemEventService.Register<PersonaExplicitScoreRemovedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

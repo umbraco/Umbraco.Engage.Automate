@@ -8,7 +8,7 @@ internal sealed class PersonaScoredBridgeHandler(IEventAggregator eventAggregato
     : EngageBridgeHandlerBase, IEventHandler<PersonaScoredEvent>
 {
     public void Handle(PersonaScoredEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngagePersonaScoredNotification(@event));
+        eventAggregator.Publish(new EngagePersonaScoredNotification(@event));
 
     public override void Register() => SystemEventService.Register<PersonaScoredEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

@@ -8,7 +8,7 @@ internal sealed class AppliedPersonalizationSavedBridgeHandler(IEventAggregator 
     : EngageBridgeHandlerBase, IEventHandler<AppliedPersonalizationSavedEvent>
 {
     public void Handle(AppliedPersonalizationSavedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngageAppliedPersonalizationSavedNotification());
+        eventAggregator.Publish(new EngageAppliedPersonalizationSavedNotification());
 
     public override void Register() => SystemEventService.Register<AppliedPersonalizationSavedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

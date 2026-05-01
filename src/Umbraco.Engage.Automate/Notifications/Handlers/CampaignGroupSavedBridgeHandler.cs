@@ -8,7 +8,7 @@ internal sealed class CampaignGroupSavedBridgeHandler(IEventAggregator eventAggr
     : EngageBridgeHandlerBase, IEventHandler<CampaignGroupSavedEvent>
 {
     public void Handle(CampaignGroupSavedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngageCampaignGroupSavedNotification());
+        eventAggregator.Publish(new EngageCampaignGroupSavedNotification());
 
     public override void Register() => SystemEventService.Register<CampaignGroupSavedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

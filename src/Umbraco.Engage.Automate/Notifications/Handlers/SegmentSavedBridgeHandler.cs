@@ -8,7 +8,7 @@ internal sealed class SegmentSavedBridgeHandler(IEventAggregator eventAggregator
     : EngageBridgeHandlerBase, IEventHandler<SegmentSavedEvent>
 {
     public void Handle(SegmentSavedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngageSegmentSavedNotification(@event));
+        eventAggregator.Publish(new EngageSegmentSavedNotification(@event));
 
     public override void Register() => SystemEventService.Register<SegmentSavedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

@@ -8,7 +8,7 @@ internal sealed class PageviewExtractedBridgeHandler(IEventAggregator eventAggre
     : EngageBridgeHandlerBase, IEventHandler<AnalyticsPageviewExtractedEvent>
 {
     public void Handle(AnalyticsPageviewExtractedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngagePageviewExtractedNotification(@event));
+        eventAggregator.Publish(new EngagePageviewExtractedNotification(@event));
 
     public override void Register() => SystemEventService.Register<AnalyticsPageviewExtractedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

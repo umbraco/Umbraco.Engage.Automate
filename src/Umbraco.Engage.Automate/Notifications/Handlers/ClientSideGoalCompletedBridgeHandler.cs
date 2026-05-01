@@ -8,7 +8,7 @@ internal sealed class ClientSideGoalCompletedBridgeHandler(IEventAggregator even
     : EngageBridgeHandlerBase, IEventHandler<ClientSideGoalCompletedEvent>
 {
     public void Handle(ClientSideGoalCompletedEvent @event) =>
-        _ = eventAggregator.PublishAsync(new EngageClientSideGoalCompletedNotification(@event));
+        eventAggregator.Publish(new EngageClientSideGoalCompletedNotification(@event));
 
     public override void Register() => SystemEventService.Register<ClientSideGoalCompletedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);
