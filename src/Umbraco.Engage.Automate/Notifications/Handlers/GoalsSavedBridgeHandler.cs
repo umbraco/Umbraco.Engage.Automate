@@ -8,7 +8,7 @@ internal sealed class GoalsSavedBridgeHandler(IEventAggregator eventAggregator)
     : EngageBridgeHandlerBase, IEventHandler<GoalsSavedEvent>
 {
     public void Handle(GoalsSavedEvent @event) =>
-        eventAggregator.PublishAsync(new EngageGoalsSavedNotification()).GetAwaiter().GetResult();
+        eventAggregator.Publish(new EngageGoalsSavedNotification());
 
     public override void Register() => SystemEventService.Register<GoalsSavedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

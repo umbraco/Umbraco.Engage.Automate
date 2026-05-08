@@ -14,18 +14,17 @@ public sealed class PageviewExtractedTrigger
 
     public override IEnumerable<TriggerEvent> MapEvent(EngagePageviewExtractedNotification notification)
     {
-        var pageview = notification.Pageview;
         yield return new TriggerEvent<PageviewExtractedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "visitor",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new PageviewExtractedTriggerOutput
             {
-                PageviewId = pageview.Id,
-                PageviewGuid = pageview.Guid,
-                Timestamp = pageview.Timestamp,
-                SessionId = pageview.Session.Id,
-                WasPersonalized = pageview.WasPersonalized,
+                PageviewId = notification.PageviewId,
+                PageviewGuid = notification.PageviewGuid,
+                Timestamp = notification.Timestamp,
+                SessionId = notification.SessionId,
+                WasPersonalized = notification.WasPersonalized,
             },
         };
     }

@@ -17,7 +17,7 @@ public sealed class CampaignGroupSavedTrigger
         yield return new TriggerEvent<CampaignGroupSavedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new CampaignGroupSavedTriggerOutput(),
         };
     }

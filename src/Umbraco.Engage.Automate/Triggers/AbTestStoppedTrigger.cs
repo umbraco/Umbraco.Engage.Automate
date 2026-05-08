@@ -17,7 +17,7 @@ public sealed class AbTestStoppedTrigger
         yield return new TriggerEvent<AbTestStoppedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new AbTestStoppedTriggerOutput
             {
                 AbTestId = notification.AbTestId,

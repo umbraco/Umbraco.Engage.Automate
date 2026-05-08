@@ -17,7 +17,7 @@ public sealed class PersonaExplicitScoreRemovedTrigger
         yield return new TriggerEvent<PersonaExplicitScoreRemovedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new PersonaExplicitScoreRemovedTriggerOutput
             {
                 VisitorId = notification.VisitorId,

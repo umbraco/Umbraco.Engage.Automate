@@ -1,6 +1,5 @@
 using Umbraco.Cms.Core.Notifications;
 using Umbraco.Engage.Infrastructure.Events;
-using Umbraco.Engage.Infrastructure.Personalization.CustomerJourney;
 
 namespace Umbraco.Engage.Automate.Notifications;
 
@@ -8,5 +7,6 @@ namespace Umbraco.Engage.Automate.Notifications;
 public sealed class EngageCustomerJourneyStepExplicitScoredNotification(CustomerJourneyStepExplicitScoredEvent @event) : INotification
 {
     public Guid VisitorId { get; } = @event.VisitorId;
-    public CustomerJourneyStepExplicitScore Entity { get; } = @event.Entity;
+    public long CustomerJourneyStepId { get; } = @event.Entity.CustomerJourneyStepId;
+    public long GroupId { get; } = @event.Entity.GroupId;
 }

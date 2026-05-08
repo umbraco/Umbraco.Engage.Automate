@@ -17,7 +17,7 @@ public sealed class PersonaScoredTrigger
         yield return new TriggerEvent<PersonaScoredTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "visitor",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new PersonaScoredTriggerOutput
             {
                 VisitorId = notification.VisitorId,

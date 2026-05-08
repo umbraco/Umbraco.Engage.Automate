@@ -8,7 +8,7 @@ internal sealed class NewSessionStartedBridgeHandler(IEventAggregator eventAggre
     : EngageBridgeHandlerBase, IEventHandler<AnalyticsNewSessionStartedEvent>
 {
     public void Handle(AnalyticsNewSessionStartedEvent @event) =>
-        eventAggregator.PublishAsync(new EngageNewSessionStartedNotification(@event)).GetAwaiter().GetResult();
+        eventAggregator.Publish(new EngageNewSessionStartedNotification(@event));
 
     public override void Register() => SystemEventService.Register<AnalyticsNewSessionStartedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

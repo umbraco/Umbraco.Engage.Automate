@@ -17,7 +17,7 @@ public sealed class CustomGoalCompletedTrigger
         yield return new TriggerEvent<CustomGoalCompletedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "visitor",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new CustomGoalCompletedTriggerOutput
             {
                 VisitorId = notification.VisitorId,

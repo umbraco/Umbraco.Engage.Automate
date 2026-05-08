@@ -17,7 +17,7 @@ public sealed class GoalsSavedTrigger
         yield return new TriggerEvent<GoalsSavedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new GoalsSavedTriggerOutput(),
         };
     }

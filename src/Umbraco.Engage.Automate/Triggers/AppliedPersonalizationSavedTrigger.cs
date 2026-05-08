@@ -17,7 +17,7 @@ public sealed class AppliedPersonalizationSavedTrigger
         yield return new TriggerEvent<AppliedPersonalizationSavedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new AppliedPersonalizationSavedTriggerOutput(),
         };
     }

@@ -17,12 +17,12 @@ public sealed class PersonaExplicitScoredTrigger
         yield return new TriggerEvent<PersonaExplicitScoredTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new PersonaExplicitScoredTriggerOutput
             {
                 VisitorId = notification.VisitorId,
-                PersonaId = notification.Entity.PersonaId,
-                GroupId = notification.Entity.GroupId,
+                PersonaId = notification.PersonaId,
+                GroupId = notification.GroupId,
             },
         };
     }

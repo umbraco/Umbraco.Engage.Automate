@@ -17,7 +17,7 @@ public sealed class SegmentDeletedTrigger
         yield return new TriggerEvent<SegmentDeletedTriggerOutput>
         {
             TriggerAlias = Alias,
-            InitiatorType = "system",
+            InitiatorType = TriggerInitiatorType.System,
             Output = new SegmentDeletedTriggerOutput
             {
                 SegmentId = notification.SegmentId,
