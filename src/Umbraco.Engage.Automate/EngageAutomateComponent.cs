@@ -14,22 +14,23 @@ internal sealed class EngageAutomateComponent(
     AbTestStartedBridgeHandler abTestStarted,
     AbTestStoppedBridgeHandler abTestStopped,
     AbTestVariantSavedBridgeHandler abTestVariantSaved,
-    NewSessionStartedBridgeHandler newSessionStarted,
-    PageviewExtractedBridgeHandler pageviewExtracted,
+    // High-volume visitor-event triggers excluded from initial launch — see EngageAutomateComposer.
+    // NewSessionStartedBridgeHandler newSessionStarted,
+    // PageviewExtractedBridgeHandler pageviewExtracted,
     AppliedPersonalizationSavedBridgeHandler appliedPersonalizationSaved,
     SegmentSavedBridgeHandler segmentSaved,
     SegmentDeletedBridgeHandler segmentDeleted,
     CustomerJourneyGroupSavedBridgeHandler customerJourneyGroupSaved,
-    CustomerJourneyStepScoredBridgeHandler customerJourneyStepScored,
+    // CustomerJourneyStepScoredBridgeHandler customerJourneyStepScored,
     CustomerJourneyStepExplicitScoredBridgeHandler customerJourneyStepExplicitScored,
     CustomerJourneyStepExplicitScoreRemovedBridgeHandler customerJourneyStepExplicitScoreRemoved,
     PersonaGroupSavedBridgeHandler personaGroupSaved,
-    PersonaScoredBridgeHandler personaScored,
+    // PersonaScoredBridgeHandler personaScored,
     PersonaExplicitScoredBridgeHandler personaExplicitScored,
     PersonaExplicitScoreRemovedBridgeHandler personaExplicitScoreRemoved,
     GoalsSavedBridgeHandler goalsSaved,
-    CustomGoalCompletedBridgeHandler customGoalCompleted,
-    ClientSideGoalCompletedBridgeHandler clientSideGoalCompleted,
+    // CustomGoalCompletedBridgeHandler customGoalCompleted,
+    // ClientSideGoalCompletedBridgeHandler clientSideGoalCompleted,
     CampaignGroupSavedBridgeHandler campaignGroupSaved) : IComponent
 {
     public void Initialize()
@@ -39,22 +40,22 @@ internal sealed class EngageAutomateComponent(
         abTestStarted.Register();
         abTestStopped.Register();
         abTestVariantSaved.Register();
-        newSessionStarted.Register();
-        pageviewExtracted.Register();
+        // newSessionStarted.Register();
+        // pageviewExtracted.Register();
         appliedPersonalizationSaved.Register();
         segmentSaved.Register();
         segmentDeleted.Register();
         customerJourneyGroupSaved.Register();
-        customerJourneyStepScored.Register();
+        // customerJourneyStepScored.Register();
         customerJourneyStepExplicitScored.Register();
         customerJourneyStepExplicitScoreRemoved.Register();
         personaGroupSaved.Register();
-        personaScored.Register();
+        // personaScored.Register();
         personaExplicitScored.Register();
         personaExplicitScoreRemoved.Register();
         goalsSaved.Register();
-        customGoalCompleted.Register();
-        clientSideGoalCompleted.Register();
+        // customGoalCompleted.Register();
+        // clientSideGoalCompleted.Register();
         campaignGroupSaved.Register();
     }
 
@@ -65,22 +66,22 @@ internal sealed class EngageAutomateComponent(
         abTestStarted.Unregister();
         abTestStopped.Unregister();
         abTestVariantSaved.Unregister();
-        newSessionStarted.Unregister();
-        pageviewExtracted.Unregister();
+        // newSessionStarted.Unregister();
+        // pageviewExtracted.Unregister();
         appliedPersonalizationSaved.Unregister();
         segmentSaved.Unregister();
         segmentDeleted.Unregister();
         customerJourneyGroupSaved.Unregister();
-        customerJourneyStepScored.Unregister();
+        // customerJourneyStepScored.Unregister();
         customerJourneyStepExplicitScored.Unregister();
         customerJourneyStepExplicitScoreRemoved.Unregister();
         personaGroupSaved.Unregister();
-        personaScored.Unregister();
+        // personaScored.Unregister();
         personaExplicitScored.Unregister();
         personaExplicitScoreRemoved.Unregister();
         goalsSaved.Unregister();
-        customGoalCompleted.Unregister();
-        clientSideGoalCompleted.Unregister();
+        // customGoalCompleted.Unregister();
+        // clientSideGoalCompleted.Unregister();
         campaignGroupSaved.Unregister();
     }
 }
