@@ -8,7 +8,7 @@ internal sealed class CustomGoalCompletedBridgeHandler(IEventAggregator eventAgg
     : EngageBridgeHandlerBase, IEventHandler<CustomGoalCompletedEvent>
 {
     public void Handle(CustomGoalCompletedEvent @event) =>
-        eventAggregator.Publish(new EngageCustomGoalCompletedNotification(@event));
+        eventAggregator.PublishAsync(new EngageCustomGoalCompletedNotification(@event)).GetAwaiter().GetResult();
 
     public override void Register() => SystemEventService.Register<CustomGoalCompletedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);

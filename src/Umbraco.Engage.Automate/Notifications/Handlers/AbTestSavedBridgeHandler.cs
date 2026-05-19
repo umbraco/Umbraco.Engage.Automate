@@ -8,7 +8,7 @@ internal sealed class AbTestSavedBridgeHandler(IEventAggregator eventAggregator)
     : EngageBridgeHandlerBase, IEventHandler<AbTestSavedEvent>
 {
     public void Handle(AbTestSavedEvent @event) =>
-        eventAggregator.Publish(new EngageAbTestSavedNotification(@event));
+        eventAggregator.PublishAsync(new EngageAbTestSavedNotification(@event)).GetAwaiter().GetResult();
 
     public override void Register() => SystemEventService.Register<AbTestSavedEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);
