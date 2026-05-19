@@ -11,17 +11,13 @@ public class AbTestSavedBridgeHandlerTests
     public void Handle_PublishesEngageAbTestSavedNotification()
     {
         var eventAggregator = new Mock<IEventAggregator>();
-        eventAggregator
-            .Setup(ea => ea.PublishAsync(It.IsAny<EngageAbTestSavedNotification>(), It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
 
         var handler = new AbTestSavedBridgeHandler(eventAggregator.Object);
         handler.Handle(new AbTestSavedEvent(abTestId: 42));
 
         eventAggregator.Verify(
-            ea => ea.PublishAsync(
-                It.Is<EngageAbTestSavedNotification>(n => n.AbTestId == 42),
-                It.IsAny<CancellationToken>()),
+            ea => ea.Publish(
+                It.Is<EngageAbTestSavedNotification>(n => n.AbTestId == 42)),
             Times.Once);
     }
 }

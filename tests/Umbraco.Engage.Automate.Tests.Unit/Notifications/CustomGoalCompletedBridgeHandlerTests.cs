@@ -11,9 +11,6 @@ public class CustomGoalCompletedBridgeHandlerTests
     public void Handle_PublishesEngageCustomGoalCompletedNotification()
     {
         var eventAggregator = new Mock<IEventAggregator>();
-        eventAggregator
-            .Setup(ea => ea.PublishAsync(It.IsAny<EngageCustomGoalCompletedNotification>(), It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
 
         var visitorId = Guid.NewGuid();
         var timestamp = DateTime.UtcNow;
@@ -22,12 +19,11 @@ public class CustomGoalCompletedBridgeHandlerTests
         handler.Handle(new CustomGoalCompletedEvent(visitorId, goalId: 7, value: 100, timestamp));
 
         eventAggregator.Verify(
-            ea => ea.PublishAsync(
+            ea => ea.Publish(
                 It.Is<EngageCustomGoalCompletedNotification>(n =>
                     n.VisitorId == visitorId &&
                     n.GoalId == 7 &&
-                    n.Value == 100),
-                It.IsAny<CancellationToken>()),
+                    n.Value == 100)),
             Times.Once);
     }
 }
