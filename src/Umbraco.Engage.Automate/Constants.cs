@@ -16,6 +16,6 @@ public static class Constants
         /// signals. Pageview-extracted events in particular carry session-level data
         /// the section gate must protect.
         /// </summary>
-        public const string Engage = "engage";
+        public const string Engage = "Umb.Section.Engage";
     }
 }
