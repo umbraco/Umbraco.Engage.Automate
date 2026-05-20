@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.segmentSaved", "Segment Saved",
     Description = "Fires when a segment is saved.",
     Group = "Engage",
-    Icon = "icon-users")]
+    Icon = "icon-users",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class SegmentSavedTrigger
     : NotificationTriggerBase<object, SegmentSavedTriggerOutput, EngageSegmentSavedNotification>
 {

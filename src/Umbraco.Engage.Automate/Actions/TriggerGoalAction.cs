@@ -10,7 +10,8 @@ namespace Umbraco.Engage.Automate.Actions;
 [Action("umbracoEngage.triggerGoal", "Trigger Goal",
     Description = "Triggers an Engage goal by its key.",
     Group = "Engage",
-    Icon = "icon-trophy")]
+    Icon = "icon-trophy",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class TriggerGoalAction : ActionBase<TriggerGoalSettings, TriggerGoalOutput>
 {
     private readonly IGoalService _goalService;

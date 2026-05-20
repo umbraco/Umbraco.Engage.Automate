@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.goalsSaved", "Goals Saved",
     Description = "Fires when goals are saved.",
     Group = "Engage",
-    Icon = "icon-trophy")]
+    Icon = "icon-trophy",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class GoalsSavedTrigger
     : NotificationTriggerBase<object, GoalsSavedTriggerOutput, EngageGoalsSavedNotification>
 {

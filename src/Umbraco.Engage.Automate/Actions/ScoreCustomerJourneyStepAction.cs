@@ -11,7 +11,8 @@ namespace Umbraco.Engage.Automate.Actions;
 [Action("umbracoEngage.scoreCustomerJourneyStep", "Score Customer Journey Step",
     Description = "Adds a customer journey step score for a visitor. Set IsLocked to explicitly assign the visitor to the step.",
     Group = "Engage",
-    Icon = "icon-route")]
+    Icon = "icon-route",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class ScoreCustomerJourneyStepAction : ActionBase<ScoreCustomerJourneyStepSettings, ScoreCustomerJourneyStepOutput>
 {
     private readonly ICustomerJourneyService _customerJourneyService;

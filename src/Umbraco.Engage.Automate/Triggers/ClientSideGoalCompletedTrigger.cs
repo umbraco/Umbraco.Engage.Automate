@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.clientSideGoalCompleted", "Client-Side Goal Completed",
     Description = "Fires when a visitor completes a client-side goal.",
     Group = "Engage",
-    Icon = "icon-trophy")]
+    Icon = "icon-trophy",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class ClientSideGoalCompletedTrigger
     : NotificationTriggerBase<object, ClientSideGoalCompletedTriggerOutput, EngageClientSideGoalCompletedNotification>
 {

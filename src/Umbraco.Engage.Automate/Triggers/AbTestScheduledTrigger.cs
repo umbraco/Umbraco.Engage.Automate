@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.abTestScheduled", "A/B Test Scheduled",
     Description = "Fires when an A/B test is scheduled to start.",
     Group = "Engage",
-    Icon = "icon-calendar")]
+    Icon = "icon-calendar",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class AbTestScheduledTrigger
     : NotificationTriggerBase<object, AbTestScheduledTriggerOutput, EngageAbTestScheduledNotification>
 {

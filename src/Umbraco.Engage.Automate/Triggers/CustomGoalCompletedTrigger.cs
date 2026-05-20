@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.customGoalCompleted", "Custom Goal Completed",
     Description = "Fires when a visitor completes a custom goal.",
     Group = "Engage",
-    Icon = "icon-trophy")]
+    Icon = "icon-trophy",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class CustomGoalCompletedTrigger
     : NotificationTriggerBase<object, CustomGoalCompletedTriggerOutput, EngageCustomGoalCompletedNotification>
 {

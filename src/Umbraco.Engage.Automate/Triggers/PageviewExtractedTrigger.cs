@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.pageviewExtracted", "Pageview Extracted",
     Description = "Fires when a pageview is extracted and processed.",
     Group = "Engage",
-    Icon = "icon-document")]
+    Icon = "icon-document",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class PageviewExtractedTrigger
     : NotificationTriggerBase<object, PageviewExtractedTriggerOutput, EngagePageviewExtractedNotification>
 {

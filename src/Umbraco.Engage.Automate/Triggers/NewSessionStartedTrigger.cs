@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.newSessionStarted", "New Session Started",
     Description = "Fires when a new visitor session starts.",
     Group = "Engage",
-    Icon = "icon-user")]
+    Icon = "icon-user",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class NewSessionStartedTrigger
     : NotificationTriggerBase<object, NewSessionStartedTriggerOutput, EngageNewSessionStartedNotification>
 {

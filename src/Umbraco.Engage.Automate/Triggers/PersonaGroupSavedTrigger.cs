@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.personaGroupSaved", "Persona Group Saved",
     Description = "Fires when a persona group is saved.",
     Group = "Engage",
-    Icon = "icon-user")]
+    Icon = "icon-user",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class PersonaGroupSavedTrigger
     : NotificationTriggerBase<object, PersonaGroupSavedTriggerOutput, EngagePersonaGroupSavedNotification>
 {

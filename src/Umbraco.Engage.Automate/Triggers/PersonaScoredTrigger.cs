@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.personaScored", "Persona Scored",
     Description = "Fires when a visitor's persona score changes.",
     Group = "Engage",
-    Icon = "icon-user")]
+    Icon = "icon-user",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class PersonaScoredTrigger
     : NotificationTriggerBase<object, PersonaScoredTriggerOutput, EngagePersonaScoredNotification>
 {

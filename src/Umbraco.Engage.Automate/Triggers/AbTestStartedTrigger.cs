@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.abTestStarted", "A/B Test Started",
     Description = "Fires when an A/B test starts running.",
     Group = "Engage",
-    Icon = "icon-play")]
+    Icon = "icon-play",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class AbTestStartedTrigger
     : NotificationTriggerBase<object, AbTestStartedTriggerOutput, EngageAbTestStartedNotification>
 {
