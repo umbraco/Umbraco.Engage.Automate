@@ -8,7 +8,7 @@ internal sealed class CustomerJourneyStepExplicitScoredBridgeHandler(IEventAggre
     : EngageBridgeHandlerBase, IEventHandler<CustomerJourneyStepExplicitScoredEvent>
 {
     public void Handle(CustomerJourneyStepExplicitScoredEvent @event) =>
-        eventAggregator.Publish(new EngageCustomerJourneyStepExplicitScoredNotification(@event));
+        eventAggregator.PublishAsync(new EngageCustomerJourneyStepExplicitScoredNotification(@event)).GetAwaiter().GetResult();
 
     public override void Register() => SystemEventService.Register<CustomerJourneyStepExplicitScoredEvent>(this);
     public override void Unregister() => SystemEventService.Unregister(this);
