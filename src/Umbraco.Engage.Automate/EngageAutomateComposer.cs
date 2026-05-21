@@ -19,22 +19,16 @@ public sealed class EngageAutomateComposer : IComposer
         builder.Services.AddSingleton<AbTestStartedBridgeHandler>();
         builder.Services.AddSingleton<AbTestStoppedBridgeHandler>();
         builder.Services.AddSingleton<AbTestVariantSavedBridgeHandler>();
-        builder.Services.AddSingleton<NewSessionStartedBridgeHandler>();
-        builder.Services.AddSingleton<PageviewExtractedBridgeHandler>();
         builder.Services.AddSingleton<AppliedPersonalizationSavedBridgeHandler>();
         builder.Services.AddSingleton<SegmentSavedBridgeHandler>();
         builder.Services.AddSingleton<SegmentDeletedBridgeHandler>();
         builder.Services.AddSingleton<CustomerJourneyGroupSavedBridgeHandler>();
-        builder.Services.AddSingleton<CustomerJourneyStepScoredBridgeHandler>();
         builder.Services.AddSingleton<CustomerJourneyStepExplicitScoredBridgeHandler>();
         builder.Services.AddSingleton<CustomerJourneyStepExplicitScoreRemovedBridgeHandler>();
         builder.Services.AddSingleton<PersonaGroupSavedBridgeHandler>();
-        builder.Services.AddSingleton<PersonaScoredBridgeHandler>();
         builder.Services.AddSingleton<PersonaExplicitScoredBridgeHandler>();
         builder.Services.AddSingleton<PersonaExplicitScoreRemovedBridgeHandler>();
         builder.Services.AddSingleton<GoalsSavedBridgeHandler>();
-        builder.Services.AddSingleton<CustomGoalCompletedBridgeHandler>();
-        builder.Services.AddSingleton<ClientSideGoalCompletedBridgeHandler>();
         builder.Services.AddSingleton<CampaignGroupSavedBridgeHandler>();
 
         // The component wires up bridge handlers with Engage's SystemEventService
