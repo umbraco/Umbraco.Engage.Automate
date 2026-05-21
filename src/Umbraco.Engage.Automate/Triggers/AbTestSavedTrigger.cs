@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.abTestSaved", "A/B Test Saved",
     Description = "Fires when an A/B test is saved.",
     Group = "Engage",
-    Icon = "icon-science")]
+    Icon = "icon-science",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class AbTestSavedTrigger
     : NotificationTriggerBase<object, AbTestSavedTriggerOutput, EngageAbTestSavedNotification>
 {

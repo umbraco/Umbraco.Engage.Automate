@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.personaExplicitScoreRemoved", "Persona Assignment Removed",
     Description = "Fires when a visitor's manual persona assignment is removed.",
     Group = "Engage",
-    Icon = "icon-user")]
+    Icon = "icon-user",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class PersonaExplicitScoreRemovedTrigger
     : NotificationTriggerBase<object, PersonaExplicitScoreRemovedTriggerOutput, EngagePersonaExplicitScoreRemovedNotification>
 {

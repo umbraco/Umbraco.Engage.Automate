@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.appliedPersonalizationSaved", "Applied Personalization Saved",
     Description = "Fires when applied personalizations are saved.",
     Group = "Engage",
-    Icon = "icon-settings")]
+    Icon = "icon-settings",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class AppliedPersonalizationSavedTrigger
     : NotificationTriggerBase<object, AppliedPersonalizationSavedTriggerOutput, EngageAppliedPersonalizationSavedNotification>
 {

@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.personaExplicitScored", "Persona Explicitly Assigned",
     Description = "Fires when a visitor is manually locked to a persona.",
     Group = "Engage",
-    Icon = "icon-user")]
+    Icon = "icon-user",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class PersonaExplicitScoredTrigger
     : NotificationTriggerBase<object, PersonaExplicitScoredTriggerOutput, EngagePersonaExplicitScoredNotification>
 {

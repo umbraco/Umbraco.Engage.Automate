@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.abTestStopped", "A/B Test Stopped",
     Description = "Fires when an A/B test is stopped.",
     Group = "Engage",
-    Icon = "icon-stop")]
+    Icon = "icon-stop",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class AbTestStoppedTrigger
     : NotificationTriggerBase<object, AbTestStoppedTriggerOutput, EngageAbTestStoppedNotification>
 {

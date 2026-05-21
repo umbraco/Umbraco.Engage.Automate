@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.campaignGroupSaved", "Campaign Group Saved",
     Description = "Fires when a campaign group is saved.",
     Group = "Engage",
-    Icon = "icon-megaphone")]
+    Icon = "icon-megaphone",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class CampaignGroupSavedTrigger
     : NotificationTriggerBase<object, CampaignGroupSavedTriggerOutput, EngageCampaignGroupSavedNotification>
 {

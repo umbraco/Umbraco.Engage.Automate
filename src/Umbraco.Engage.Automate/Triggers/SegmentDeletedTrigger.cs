@@ -6,7 +6,8 @@ namespace Umbraco.Engage.Automate.Triggers;
 [Trigger("umbracoEngage.segmentDeleted", "Segment Deleted",
     Description = "Fires when a segment is deleted.",
     Group = "Engage",
-    Icon = "icon-delete")]
+    Icon = "icon-delete",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class SegmentDeletedTrigger
     : NotificationTriggerBase<object, SegmentDeletedTriggerOutput, EngageSegmentDeletedNotification>
 {

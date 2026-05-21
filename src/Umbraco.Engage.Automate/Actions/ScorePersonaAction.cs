@@ -11,7 +11,8 @@ namespace Umbraco.Engage.Automate.Actions;
 [Action("umbracoEngage.scorePersona", "Score Persona",
     Description = "Adds a persona score for a visitor. Set IsLocked to explicitly assign the visitor to the persona.",
     Group = "Engage",
-    Icon = "icon-user")]
+    Icon = "icon-user",
+    RequiredSections = [Constants.Sections.Engage])]
 public sealed class ScorePersonaAction : ActionBase<ScorePersonaSettings, ScorePersonaOutput>
 {
     private readonly IPersonaService _personaService;
