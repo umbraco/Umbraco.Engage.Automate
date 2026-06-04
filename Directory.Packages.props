@@ -19,7 +19,7 @@
 
   <!-- Umbraco Engage -->
   <ItemGroup>
-    <PackageVersion Include="Umbraco.Engage.Core" Version="[17.1.1, 17.999.999)" />
+    <PackageVersion Include="Umbraco.Engage.Core" Version="[17.2.3, 17.999.999)" />
   </ItemGroup>
 
   <!-- Test dependencies -->
