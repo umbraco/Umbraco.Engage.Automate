@@ -3,6 +3,7 @@
     <PropertyGroup>
         <Title>Umbraco Engage Automate</Title>
         <Description>Umbraco Engage triggers and actions for Umbraco Automate</Description>
+        <PackageTags>$(PackageTags);umbraco-marketplace</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
