@@ -24,9 +24,9 @@ internal sealed class EngageAutomateComponent(
     PersonaExplicitScoredBridgeHandler personaExplicitScored,
     PersonaExplicitScoreRemovedBridgeHandler personaExplicitScoreRemoved,
     GoalsSavedBridgeHandler goalsSaved,
-    CampaignGroupSavedBridgeHandler campaignGroupSaved) : IComponent
+    CampaignGroupSavedBridgeHandler campaignGroupSaved) : IAsyncComponent
 {
-    public void Initialize()
+    public Task InitializeAsync(bool isRestarting, CancellationToken cancellationToken)
     {
         abTestSaved.Register();
         abTestScheduled.Register();
@@ -44,9 +44,11 @@ internal sealed class EngageAutomateComponent(
         personaExplicitScoreRemoved.Register();
         goalsSaved.Register();
         campaignGroupSaved.Register();
+
+        return Task.CompletedTask;
     }
 
-    public void Terminate()
+    public Task TerminateAsync(bool isRestarting, CancellationToken cancellationToken)
     {
         abTestSaved.Unregister();
         abTestScheduled.Unregister();
@@ -64,5 +66,7 @@ internal sealed class EngageAutomateComponent(
         personaExplicitScoreRemoved.Unregister();
         goalsSaved.Unregister();
         campaignGroupSaved.Unregister();
+
+        return Task.CompletedTask;
     }
 }
