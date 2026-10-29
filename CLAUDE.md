@@ -44,7 +44,7 @@ dotnet restore Umbraco.Engage.Automate.slnx
 dotnet build Umbraco.Engage.Automate.slnx --configuration Release
 dotnet test Umbraco.Engage.Automate.slnx --configuration Release
 
-# Pack (mirrors CI's build-and-pack.yml)
+# Pack (mirrors CI's BuildAndPack stage)
 dotnet pack Umbraco.Engage.Automate.slnx --configuration Release --output ./artifacts
 
 # Run a single test file/class
@@ -68,7 +68,7 @@ Nothing unusual beyond standard .NET conventions (`Nullable` + `ImplicitUsings` 
 
 - **Project:** `tests/Umbraco.Engage.Automate.Tests.Unit` — xUnit + Moq + Shouldly (`Using` aliases pre-imported globally via the csproj, so no `using Xunit;` etc. needed in test files).
 - **Run:** `dotnet test Umbraco.Engage.Automate.slnx --configuration Release`
-- **CI runs the matrix on Windows, Linux, and macOS** (`.devops/test.yml:8-17`) — don't rely on Windows-only path handling or line-ending assumptions in tests.
+- **CI runs the matrix on Windows, Linux, and macOS** for `main`, `release/*` and `hotfix/*` builds (Linux only for PRs and feature branches; the shared Umbraco.Build template's Test stage) — don't rely on Windows-only path handling or line-ending assumptions in tests.
 - **Coverage is asymmetric and worth knowing about:**
   - All 16 active triggers have a corresponding `*TriggerTests.cs` (added wholesale in commit `8d4e7cf`).
   - All 3 actions have tests.
@@ -100,11 +100,11 @@ Nothing unusual beyond standard .NET conventions (`Nullable` + `ImplicitUsings` 
   - `support/17.x` = previous CMS major line (**v17**) — checked out locally as a persistent worktree at `.claude/worktrees/support-17.x`
   - `release/YYYY.MM.N` branches are cut from whichever line is releasing; `N` is a **shared counter across both lines** in a given calendar month (e.g. `release/2026.07.1` for a v18 release, `release/2026.07.2` for a v17 release the same month) — never assume `N` restarts per line.
   - Active/historical feature branches seen in this repo's history: `feature/cms-v18-prep`, `feature/code-review`, `feature/disable-high-volume-triggers`, `feature/permission-gating`.
-- **CI** (`azure-pipelines.yml` → `.devops/build-and-pack.yml` + `.devops/test.yml`): triggers on push to `main`, `dev`, `release/*`, `hotfix/*`, `feature/*`, and on PRs into `main`/`dev`. Stages: **Build & Pack** then **Test** (Windows/Linux/macOS matrix), plus **Generate SBOM** from the shared `umbraco/Umbraco.Build` repo (`devops/stages/sbom.yml`) on `release/*`/`hotfix/*` only. It runs `umbraco-sbom` with a license policy check (a violation fails the run) and uploads to Dependency-Track as `Umbraco.Engage.Automate v<major>`; tick **Generate SBOM and check licenses** at queue time to check another branch without uploading. **There is no Publish stage** — nothing in CI pushes the built `.nupkg` anywhere.
-- **Publishing is manual**: after CI is green on a `release/*` branch, a human downloads the `nupkg` pipeline artifact and pushes it to the MyGet feed by hand. Nothing automated does this.
+- **CI** (`azure-pipelines.yml`, which extends `devops/templates/azure-pipelines-template.yml` from the shared `umbraco/Umbraco.Build` repo): triggers on push to `main`, `dev`, `release/*`, `hotfix/*`, `feature/*`, and on PRs into `main`/`dev`. Stages: **BuildAndPack** then **Test**, plus **GenerateSBOM** on `release/*`/`hotfix/*` only. It runs `umbraco-sbom` with a license policy check (a violation fails the run) and uploads to Dependency-Track as `Umbraco.Engage.Automate v<major>`; tick **Generate SBOM and check licenses** at queue time to check another branch without uploading.
+- **Publishing**: on `release/*` and `hotfix/*` builds only, the **Prerelease** stage pushes the `.nupkg` to the MyGet pre-releases feed and the **Release** stage pushes it to NuGet.org after someone approves "Wait for manual approval" in the run. Every other branch skips both: `main` is a public release in `version.json` too, so `azure-pipelines.yml` gates them by branch rather than leaving the template's `auto`. The queue-time **Prerelease to MyGet** / **Release to NuGet.org** parameters override this (e.g. `nightly` pushes a `main` build to the MyGet nightly feed).
 - **Release process** is codified in this repo's own Claude Code skills — don't hand-roll it, invoke the skill instead:
   - `.claude/skills/release-management/SKILL.md` — cuts a `release/YYYY.MM.N` branch, bumps `Directory.Packages.props` Automate/Engage ranges to `[X.0.0, X.999.999)` for the target major, and sets `version.json` to the stable release version.
-  - `.claude/skills/post-release-cleanup/SKILL.md` — run only after CI is green **and** a human has confirmed the manual MyGet push happened. Merges the release branch back (`--no-ff`) into its target, tags `release-<version>`, creates a GitHub Release via `gh release create <tag> --target <branch> --generate-notes`, patch-bumps `version.json` on the target branch for nightly builds, and deletes the release branch (local + remote).
+  - `.claude/skills/post-release-cleanup/SKILL.md` — run only after the release build has published to MyGet and NuGet.org. Merges the release branch back (`--no-ff`) into its target, tags `release-<version>`, creates a GitHub Release via `gh release create <tag> --target <branch> --generate-notes`, patch-bumps `version.json` on the target branch for nightly builds, and deletes the release branch (local + remote).
 - **Versioning:** Nerdbank.GitVersioning (`version.json`); `publicReleaseRefSpec` covers `main`, `hotfix/*`, `release/*` — builds off any other branch (including `support/17.x` directly) produce prerelease/non-public version strings, which is expected.
 - **No `CONTRIBUTING.md` or PR template exists in this repo** — there's no documented PR checklist to follow beyond what CI enforces (build + test green). Commit message style in history is loosely Conventional-Commits-flavored (`fix(tests): ...`, `build(deps): ...`, `refactor(trigger): ...`, `chore(release): ...`) — follow that style for consistency even though it isn't enforced by tooling.
 
