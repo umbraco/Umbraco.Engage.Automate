@@ -13,7 +13,7 @@ Example: fire a goal when a form is submitted, or react when an A/B test goes li
 
 ### Requirements
 
-- Umbraco CMS 17.x
-- Umbraco Engage 17.x
-- Umbraco.Automate 17.0+
-- .NET 10.0
+- Umbraco CMS 19
+- Umbraco Engage 19
+- Umbraco Automate 19
+- .NET 11.0

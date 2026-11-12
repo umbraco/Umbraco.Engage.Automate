@@ -19,18 +19,23 @@ Umbraco.Engage.Automate is a provider package that connects [Umbraco Engage](htt
 
 ## Installation
 
+Version 19 is a pre-release. Pre-releases are published to the Umbraco prereleases feed, not nuget.org. Add the feed once, then install with `--prerelease`:
+
 ```bash
-dotnet add package Umbraco.Engage.Automate
+dotnet nuget add source https://www.myget.org/F/umbracoprereleases/api/v3/index.json --name "Umbraco Prereleases"
+dotnet add package Umbraco.Engage.Automate --prerelease
 ```
+
+If your `nuget.config` uses package source mapping, map `Umbraco.*` to that feed too. Version 18 is on nuget.org: `dotnet add package Umbraco.Engage.Automate`.
 
 No further wiring is required — the composer is auto-discovered by Umbraco's composition system.
 
 ## Requirements
 
-- .NET 10.0
-- Umbraco CMS 18.x
-- Umbraco Engage 18.x
-- Umbraco.Automate 18.0+
+- .NET 11.0
+- Umbraco CMS 19
+- Umbraco Engage 19
+- Umbraco Automate 19
 
 ## Triggers
 
