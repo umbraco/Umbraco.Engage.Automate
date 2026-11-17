@@ -1,7 +1,6 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
   </PropertyGroup>
 
   <!-- Versioning -->
@@ -18,10 +17,8 @@
   </ItemGroup>
 
   <!-- Umbraco Engage -->
-  <!-- Floats on the nightly feed until Engage 19 is published to nuget.org: its nightly build is a
-       19.0.0 beta1 preview (double-hyphen version), which sorts below 19.0.0-rc1, so a [19.0.0-rc1, ...) range cannot resolve it. -->
   <ItemGroup>
-    <PackageVersion Include="Umbraco.Engage.Core" Version="19.*-*" />
+    <PackageVersion Include="Umbraco.Engage.Core" Version="[19.0.0-rc1, 19.999.999)" />
   </ItemGroup>
 
   <!-- Test dependencies -->
